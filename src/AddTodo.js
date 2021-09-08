@@ -11,14 +11,13 @@ export const AddTodo = ({ addTodo }) => {
         } else {
             Alert.alert('введите дело')
         }
-
     }
     
     return (
         <View style={styles.container}>
             <TextInput 
                 style={styles.textinput} 
-                placeholder="введите дело" value="zxc"
+                placeholder="введите дело"
                 onChangeText={text => setValue(text)}
                 value={value}
             />

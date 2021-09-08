@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { Navbar } from './src/Navbar';
 import { AddTodo } from './src/AddTodo';
 import { Todo } from './src/Todo';
@@ -15,16 +15,20 @@ export default function App() {
     setTodos((prev) => [newTodo, ...prev])
   }
 
+  const removeTodo = id => {
+    setTodos(prev => prev.filter(todo => todo.id != id))
+  }
+
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Navbar title={title}/>
       <AddTodo addTodo={addTodo}/>
       <View>
-        {todos.map((item) => <Todo key={item.id} item={item.title}/>)}
+        {todos.map((item) => <Todo onRemove={removeTodo} key={item.id} item={item}/>)}
       </View>
-
+ 
       <StatusBar style="auto" />
-    </View>
+    </ScrollView>
   );
 }
 
