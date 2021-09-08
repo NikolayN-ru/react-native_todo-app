@@ -1,16 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Navbar } from './src/Navbar';
 import { AddTodo } from './src/AddTodo';
+import { Todo } from './src/Todo';
 
 export default function App() {
   const title = `-> список дел <-`
+  const [todos, setTodos] = useState([])
+  
+  const addTodo = title => {
+    const newTodo = { id: Date.now().toString(), title: title}
+    // setTodos(todos.concat([newTodo]))
+    setTodos((prev) => [newTodo, ...prev])
+  }
+
   return (
     <View style={styles.container}>
       <Navbar title={title}/>
-      <AddTodo/>
-      <Text style={styles.text}>react native!</Text>
+      <AddTodo addTodo={addTodo}/>
+      <View>
+        {todos.map((item) => <Todo key={item.id} item={item.title}/>)}
+      </View>
+
       <StatusBar style="auto" />
     </View>
   );

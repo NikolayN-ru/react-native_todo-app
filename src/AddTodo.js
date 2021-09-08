@@ -1,11 +1,28 @@
-import React from 'react';
-import { View, TextInput, Button, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, TextInput, Button, StyleSheet, Alert } from 'react-native';
 
-export const AddTodo = props => {
+export const AddTodo = ({ addTodo }) => {
+    const [value, setValue] = useState([])
+
+    const Submit = () => {
+        if (value.trim()) {
+            addTodo(value)
+            setValue('')
+        } else {
+            Alert.alert('введите дело')
+        }
+
+    }
+    
     return (
         <View style={styles.container}>
-            <TextInput style={styles.textinput} placeholder="введите дело"/>
-            <Button title="добавить"/>
+            <TextInput 
+                style={styles.textinput} 
+                placeholder="введите дело" value="zxc"
+                onChangeText={text => setValue(text)}
+                value={value}
+            />
+            <Button title="добавить" onPress={Submit}/>
         </View>
     )
 }
