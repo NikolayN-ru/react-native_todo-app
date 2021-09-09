@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Button, TextInput } from "react-native";
+import { Card } from "../components/ui/card";
 
 export const TodoScreen = ({ todo, backTodos, removeTodo, renameTodoMain }) => {
   const [refresh, setRefresh] = useState(false);
@@ -11,34 +12,44 @@ export const TodoScreen = ({ todo, backTodos, removeTodo, renameTodoMain }) => {
   };
 
   const renameTodo = () => {
-    setRefresh(!refresh)
-    // renameTodoMain(deloId, delo)
-  }
+    setRefresh(!refresh);
+  };
 
   const rew = () => {
     backTodos();
-    // let deloId = todo.id
-    // console.log(deloId, '^^^^^', delo)
-    // renameTodoMain(Number(deloId), delo)
-  }
+    renameTodoMain(todo.id, delo);
+  };
 
   if (refresh) {
     return (
-        <View style={styles.container}>
-            <TextInput value={delo} onChangeText={text => setDelo(text)}/>
-            <Button title="обратно" onPress={renameTodo} />
+      <View style={styles.container}>
+        <TextInput style={styles.textinput} color="#FF9200" value={delo} onChangeText={(text) => setDelo(text)} />
+        <View style={styles.button}>
+        <Button color="#FF9200" title="сохранить и вернуться" onPress={renameTodo} />
         </View>
-
+        
+      </View>
     );
   } else {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>todo-screen {delo}</Text>
-        <Text style={styles.text}>id {todo.id}</Text>
-        <Button title="BACK" onPress={rew} />
-        <Button title="REMOVE" onPress={removeTodoView} />
-        <Text>________________________________</Text>
-        <Button title="РЕДАКТИРОВАТЬ" onPress={() => setRefresh(!refresh)} />
+        <Card>
+          <Text style={styles.text}>todo-screen {delo}</Text>
+          <Text style={styles.text}>id {todo.id}</Text>
+        </Card>
+        <View style={styles.button}>
+          <Button color="#FF9200" title="НАЗАД" onPress={rew} />
+        </View>
+        <View style={styles.button}>
+          <Button color="white" title="УДАЛИТЬ" onPress={removeTodoView} />
+        </View>
+        <View style={styles.button}>
+          <Button
+            color="#FF9200"
+            title="РЕДАКТИРОВАТЬ"
+            onPress={() => setRefresh(!refresh)}
+          />
+        </View>
       </View>
     );
   }
@@ -51,4 +62,19 @@ const styles = StyleSheet.create({
   container: {
     margin: 50,
   },
+  button: {
+    backgroundColor: "#A368D5",
+    marginTop: 10,
+    borderRadius: 10,
+  },
+  textinput: {
+    marginTop: 20,
+    padding: 8,
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    borderStyle: "solid",
+    borderColor: "#FF7800",
+    borderWidth: 4,
+  }
 });

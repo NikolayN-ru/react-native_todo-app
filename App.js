@@ -23,9 +23,15 @@ export default function App() {
   };
 
   const renameTodoMain = (id, text) => {
-    setTodos((prev) => prev.forEach((item) => {if(item.id == id){}}));
-    console.log(todos)
-  }
+    setTodos((prev) =>
+      prev.map((item) => {
+        if (item.id == id) {
+          item.title = text;
+        }
+        return item;
+      })
+    );
+  };
 
   let content = (
     <MainScreen
