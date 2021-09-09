@@ -5,9 +5,12 @@ import { TodoScreen } from "./src/screens/TodoScreen";
 import * as Font from "expo-font";
 import AppLoading from 'expo-app-loading';
 
+
 async function loadApplication() {
   await Font.loadAsync({
     'font-1': require('./assets/fonts/rrr.ttf'),
+    'font-3': require('./assets/fonts/font-3.ttf'),
+    'font-4': require('./assets/fonts/font-4.ttf'),
   })
 }
 

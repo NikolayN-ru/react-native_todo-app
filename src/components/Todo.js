@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { AppText } from "./ui/appText";
 
 export const Todo = ({ item, onRemove, TodoIdView }) => {
   const LongPressHandler = () => {

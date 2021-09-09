@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, TextInput, Button, StyleSheet, Alert } from "react-native";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export const AddTodo = ({ addTodo }) => {
   const [value, setValue] = useState("");
@@ -21,7 +22,10 @@ export const AddTodo = ({ addTodo }) => {
         onChangeText={(text) => setValue(text)}
         value={value}
       />
-      <Button title="добавить" onPress={Submit} />
+      <MaterialCommunityIcons.Button onPress={Submit} name="alarm-plus" size={24} color="white" backgroundColor="#FFAD40" >
+      добавить
+      </MaterialCommunityIcons.Button>
+      {/* <Button title="добавить" onPress={Submit} /> */}
     </View>
   );
 };

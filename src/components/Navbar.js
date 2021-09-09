@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { AppText } from './ui/appText';
 
 export const Navbar = ({ title }) => {
     const q = `-> список дел <-`
     return (
         <View style={styles.navbar}>
-            <Text style={styles.text}>{title}</Text>
+            <AppText style={styles.text}>{title}</AppText>
         </View>
     )
 }
@@ -20,6 +21,6 @@ const styles = StyleSheet.create({
     },
     text: {
         color: 'white',
-        fontSize: 16,
+        fontSize: 22,
     }
 })

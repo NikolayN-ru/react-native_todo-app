@@ -3,7 +3,7 @@ import { Text, StyleSheet } from 'react-native';
 
 export const AppText = props => {
     return (
-        <Text style={styles.conteiner}>
+        <Text style={{...styles.conteiner, ...props.style}}>
             {props.children}
         </Text>
     )
@@ -11,7 +11,7 @@ export const AppText = props => {
 
 const styles = StyleSheet.create({
     conteiner: {
-        fontFamily: 'font-1',
+        fontFamily: 'font-3',
         fontSize: 20,
         color: "#FF9200"
     }
