@@ -30,9 +30,16 @@ export default function App() {
     )
   }
 
-  const addTodo = (title) => {
+  const addTodo = async title => {
     const newTodo = { id: Date.now().toString(), title: title };
-    // setTodos(todos.concat([newTodo]))
+    
+    const response = await fetch('https://react-native-1-22734-default-rtdb.firebaseio.com/todos.json', {
+      method: 'POST',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({title})
+    })
+    const data = await response.json()
+    console.log(data.name)
     setTodos((prev) => [newTodo, ...prev]);
   };
 

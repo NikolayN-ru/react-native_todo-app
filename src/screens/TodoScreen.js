@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, Button, TextInput } from "react-native";
 import { Card } from "../components/ui/card";
 import { AppText } from "../components/ui/appText";
+import { Navbar } from '../components/Navbar';
 
 export const TodoScreen = ({ todo, backTodos, removeTodo, renameTodoMain }) => {
   const [refresh, setRefresh] = useState(false);
@@ -23,7 +24,7 @@ export const TodoScreen = ({ todo, backTodos, removeTodo, renameTodoMain }) => {
 
   if (refresh) {
     return (
-      <View style={styles.container}>
+      <View style={styles.container2}>
         <AppText>отредактировать дело :</AppText>
         <TextInput
           style={styles.textinput}
@@ -42,7 +43,10 @@ export const TodoScreen = ({ todo, backTodos, removeTodo, renameTodoMain }) => {
     );
   } else {
     return (
+      <View>
+      <Navbar title={`-> дело номер: ${todo.id} <-`}/>
       <View style={styles.container}>
+        
         <Card>
             <AppText style={styles.text}>todo-screen: {delo}</AppText>
           <Text style={styles.text}>id: {todo.id}</Text>
@@ -61,6 +65,7 @@ export const TodoScreen = ({ todo, backTodos, removeTodo, renameTodoMain }) => {
           />
         </View>
       </View>
+      </View>
     );
   }
 };
@@ -72,6 +77,11 @@ const styles = StyleSheet.create({
   },
   container: {
     margin: 50,
+  },
+  container2: {
+    width: "70%",
+    margin: 50,
+    marginTop: 150,
   },
   button: {
     backgroundColor: "#A62F00",
