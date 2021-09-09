@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
   text: {
     color: "#BF5930",
     margin: 10,
+    fontFamily: 'font-1'
   },
   container: {
     borderStyle: "solid",
